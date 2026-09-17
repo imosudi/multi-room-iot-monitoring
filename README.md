@@ -46,7 +46,7 @@ This means the current deployment is a two-room environmental monitoring system 
 - temperature
 - relative humidity
 
-The project explicitly does not fabricate CO₂ values. CO₂ support may be designed as a future extension, but it must remain clearly labelled as optional and unavailable unless a real sensor is physically connected and verified.
+The project currently does not include CO₂ values. CO₂ support may be designed as a future extension, but it remains clearly labelled as optional and unavailable until we are able to secure a real sensor and validate its readings.
 
 ## System architecture
 
@@ -101,13 +101,13 @@ A typical telemetry payload contains the room and device identity together with 
 }
 ```
 
-The final deployment should preserve the established payload contract where one already exists, while maintaining a clear and consistent message format.
+The final deployment preserves the established payload contract where one already exists, while maintaining a clear and consistent message format.
 
 ## MQTT security and certificate model
 
-The system must preserve secure broker operation and must not fall back to anonymous or unauthenticated MQTT.
+The system preserves secure broker operation and does not fall back to anonymous or unauthenticated MQTT.
 
-Required security properties:
+The platform follows these security properties:
 
 - TLS enabled
 - mTLS client validation where used
@@ -116,7 +116,7 @@ Required security properties:
 - ACL enforcement for room-specific topics
 - no private keys or production secrets committed to the repository
 
-The certificate model should align service identity with the broker and authentication policy. Certificate identities should match the intended MQTT identity and ACL rules; a valid TLS handshake alone is not sufficient evidence of proper broker authorisation.
+The certificate model aligns service identity with the broker and authentication policy. Certificate identities match the intended MQTT identity and ACL rules; a valid TLS handshake alone is not sufficient evidence of proper broker authorisation.
 
 ## oneM2M architecture
 
@@ -135,7 +135,7 @@ The mapping between the room, ESP32 identity, MQTT topic, oneM2M application ent
 
 ## MQTT → oneM2M integration
 
-The integration layer should perform the following steps:
+The integration layer performs the following steps:
 
 1. subscribe to authorised room telemetry topics
 2. validate incoming messages
@@ -147,11 +147,11 @@ The integration layer should perform the following steps:
 8. record success or failure
 9. expose health and diagnostic information
 
-If Node-RED is used, its role should remain explicit and documented rather than duplicating the main business logic.
+If Node-RED is used, it remains a clearly documented integration layer and does not duplicate the main business logic.
 
 ## Podman and Raspberry Pi 5 architecture
 
-The project is intended to run on Raspberry Pi 5 using Podman as the container runtime and must remain compatible with ARM64 / aarch64.
+The project runs on Raspberry Pi 5 with Podman as the container runtime and remains compatible with ARM64 / aarch64.
 
 The relevant service layout is expected to include:
 
@@ -162,7 +162,7 @@ The relevant service layout is expected to include:
 - InfluxDB
 - Grafana
 
-The repository should preserve an existing Podman architecture and improve it rather than replacing a functioning setup with a competing deployment model.
+The repository preserves an existing Podman architecture and improves it rather than replacing a functioning setup with a competing deployment model.
 
 ## Data model and storage
 
@@ -198,7 +198,7 @@ Required views:
 - difference metrics such as ΔTemperature and ΔHumidity
 - stale/offline/unknown device indicators
 
-The dashboard must not hide the sign of a calculated difference, and it should not directly present a fabricated CO₂ panel without real sensor validation.
+The dashboard does not hide the sign of a calculated difference, and it does not present a fabricated CO₂ panel without real sensor validation.
 
 ## RoomMesh web and API architecture
 
@@ -209,11 +209,11 @@ The project separates the primary interfaces as follows:
 - api.roommesh.site for the machine-facing API
 - grafana.roommesh.site for Grafana-based observability and analysis
 
-The API layer exposes the room and comparison data in a structured way without exposing raw storage details directly. A minimal and coherent set of endpoints should support rooms, current state, history and health checks.
+The API layer exposes the room and comparison data in a structured way without exposing raw storage details directly. A minimal and coherent set of endpoints supports rooms, current state, history and health checks.
 
 ## Data quality and device availability
 
-The implementation should validate and classify telemetry in a way that distinguishes:
+The implementation validates and classifies telemetry in a way that distinguishes:
 
 - current observation
 - historical observation
@@ -223,11 +223,11 @@ The implementation should validate and classify telemetry in a way that distingu
 - invalid data
 - system error
 
-A missing reading must not silently become a zero value. Device availability should be explicit and observable.
+A missing reading does not silently become a zero value. Device availability remains explicit and observable.
 
 ## ESP32-S3 firmware requirements
 
-Each ESP32-S3 node must be configured with:
+Each ESP32-S3 node is configured with:
 
 - room_id
 - device_id
@@ -236,20 +236,20 @@ Each ESP32-S3 node must be configured with:
 - TLS certificate configuration
 - publish interval
 
-The firmware should handle:
+The firmware handles:
 
 - failed sensor reads
 - invalid temperatures or humidity values
 - Wi-Fi loss
 - TLS failures
 - MQTT disconnection and reconnect
-- timing problems and handling of stale data
+- timing problems and stale-data handling
 
-Do not hard-code production credentials into the firmware source files.
+Production credentials are not hard-coded into the firmware source files.
 
 ## Configuration and secrets
 
-The repository should maintain a clear separation between:
+The repository maintains a clear separation between:
 
 - source code
 - configuration
@@ -257,11 +257,11 @@ The repository should maintain a clear separation between:
 - runtime state
 - persistent storage
 
-Use an example configuration file such as `.env.example` with placeholders rather than real values. Private keys, certificates, passwords and tokens must not be committed to Git.
+An example configuration file such as `.env.example` provides placeholders rather than real values. Private keys, certificates, passwords and tokens are not committed to Git.
 
 ## Installation and deployment workflow
 
-The deployment process should follow a clear sequence:
+The deployment process follows a clear sequence:
 
 1. clone the repository
 2. configure environment variables and room definitions
@@ -274,11 +274,11 @@ The deployment process should follow a clear sequence:
 9. verify InfluxDB persistence
 10. verify Grafana dashboard data
 
-This workflow should remain reproducible for a technically competent user without undocumented steps.
+This workflow remains reproducible for a technically competent user without undocumented steps.
 
 ## Certificate provisioning and infrastructure
 
-The project already includes or expects certificate management for relevant services. The implementation should preserve those patterns rather than introducing a parallel PKI workflow.
+The project already includes or expects certificate management for relevant services. The implementation preserves these patterns rather than introducing a parallel PKI workflow.
 
 Relevant certificate identities may include:
 
@@ -288,11 +288,11 @@ Relevant certificate identities may include:
 - influxdb
 - backend
 
-The repository must keep all private certificates and keys outside source control.
+Private certificates and keys remain outside source control.
 
 ## Testing strategy
 
-The project should include validation at multiple levels:
+The project includes validation at multiple levels:
 
 ### Unit tests
 - payload parsing

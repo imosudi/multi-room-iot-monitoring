@@ -1,4 +1,4 @@
-# RoomMesh — Multi-Room IoT Monitoring
+# RoomMesh - Multi-Room IoT Monitoring
 
 ![Project logo](assets/logo.svg)
 

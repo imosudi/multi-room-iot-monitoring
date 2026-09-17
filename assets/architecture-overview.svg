@@ -1,53 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 830" width="1200" height="830" fill="none">
   <title>RoomMesh Platform Architecture</title>
-  <desc>End-to-End Multi-Room Environmental Telemetry Pipeline and Edge Intelligence Architecture (Light Theme)</desc>
+  <desc>End-to-end multi-room monitoring architecture with room sensors, secure MQTT, oneM2M, InfluxDB and Grafana.</desc>
   <defs>
-    <!-- Canvas & Container Gradients -->
     <linearGradient id="bg-grad" x1="0" y1="0" x2="1200" y2="830" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="50%" stop-color="#F8FAFC"/>
-      <stop offset="100%" stop-color="#F1F5F9"/>
+      <stop offset="100%" stop-color="#F8FAFC"/>
     </linearGradient>
-
     <linearGradient id="canvas-border" x1="0" y1="0" x2="1200" y2="830" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#93C5FD" stop-opacity="0.9"/>
-      <stop offset="50%" stop-color="#38BDF8" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#6EE7B7" stop-opacity="0.9"/>
+      <stop offset="0%" stop-color="#BFDBFE"/>
+      <stop offset="100%" stop-color="#BAE6FD"/>
     </linearGradient>
-
-    <!-- Card Backgrounds -->
     <linearGradient id="card-white" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#FFFFFF"/>
       <stop offset="100%" stop-color="#F8FAFC"/>
     </linearGradient>
-
     <linearGradient id="card-gateway" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#F0F7FF"/>
-      <stop offset="100%" stop-color="#E8F2FD"/>
+      <stop offset="100%" stop-color="#EAF3FF"/>
     </linearGradient>
-
     <linearGradient id="subcard-bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#FFFFFF"/>
       <stop offset="100%" stop-color="#FAFAFA"/>
     </linearGradient>
-
     <linearGradient id="transport-grad" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#E0F2FE"/>
       <stop offset="50%" stop-color="#BAE6FD"/>
       <stop offset="100%" stop-color="#D1FAE5"/>
     </linearGradient>
-
-    <!-- Dot Pattern -->
     <pattern id="arch-grid" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
       <circle cx="2" cy="2" r="1" fill="#64748B" fill-opacity="0.08"/>
     </pattern>
-
-    <!-- Shadows -->
     <filter id="soft-shadow" x="-4%" y="-4%" width="108%" height="108%">
       <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.07"/>
     </filter>
-
-    <!-- Arrow Markers -->
     <marker id="arrow-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7"/>
     </marker>
@@ -57,207 +42,143 @@
     <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7"/>
     </marker>
-    <marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#7C3AED"/>
-    </marker>
-    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#D97706"/>
-    </marker>
   </defs>
 
-  <!-- Canvas Outer Card -->
   <rect x="1" y="1" width="1198" height="828" rx="20" fill="url(#bg-grad)" stroke="url(#canvas-border)" stroke-width="1.8"/>
   <rect x="1" y="1" width="1198" height="828" rx="20" fill="url(#arch-grid)"/>
 
-  <!-- ==================== HEADER ==================== -->
-  <g id="header">
-    <text x="50" y="44" fill="#0F172A" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5">RoomMesh Platform Architecture</text>
-    <text x="50" y="66" fill="#475569" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500">
-      Multi-Room Edge Telemetry Pipeline • Secure MQTT Transport • oneM2M Semantic Model • Comparative Observability
-    </text>
+  <text x="50" y="44" fill="#0F172A" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5">RoomMesh Platform Architecture</text>
+  <text x="50" y="66" fill="#475569" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500">Multi-room edge telemetry pipeline with secure MQTT, oneM2M, InfluxDB and Grafana</text>
 
-    <!-- Top Right Spec Pills -->
-    <g transform="translate(710, 26)" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700">
-      <!-- Hardware baseline -->
-      <rect x="0" y="0" width="280" height="24" rx="12" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
-      <circle cx="12" cy="12" r="3.5" fill="#2563EB"/>
-      <text x="22" y="16" fill="#1E40AF">BASELINE: 2× ESP32-S3 • 2× DHT22 • 1× RPi 5</text>
+  <text x="50" y="93" fill="#0284C7" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="800" letter-spacing="1">LAYER 1 • ROOM SENSOR NODES</text>
 
-      <!-- Zero fabrication guarantee -->
-      <rect x="290" y="0" width="150" height="24" rx="12" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1"/>
-      <circle cx="302" cy="12" r="3.5" fill="#16A34A"/>
-      <text x="312" y="16" fill="#166534">ZERO FABRICATED CO₂</text>
-    </g>
-  </g>
-
-  <!-- ==================== LAYER 1: SENSING LAYER (TOP) ==================== -->
-  <text x="50" y="93" fill="#0284C7" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="800" letter-spacing="1">LAYER 1 • EDGE SENSING NODES (PER-ROOM HARDWARE)</text>
-
-  <!-- Room 1 Node -->
   <g id="node-room1" filter="url(#soft-shadow)">
     <rect x="50" y="102" width="335" height="132" rx="14" fill="url(#card-white)" stroke="#38BDF8" stroke-width="1.8"/>
-    <!-- Card Header Tag -->
     <rect x="62" y="112" width="124" height="20" rx="10" fill="#F0F9FF"/>
     <circle cx="72" cy="122" r="3.5" fill="#0284C7"/>
     <text x="82" y="126" fill="#0284C7" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" font-weight="800" letter-spacing="0.8">ROOM 1 DEPLOYMENT</text>
-
-    <!-- Node Title -->
     <text x="62" y="152" fill="#0F172A" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700">ESP32-S3 Node + DHT22</text>
-    <!-- Specs -->
-    <text x="62" y="172" fill="#475569" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">
-      Identity: <tspan fill="#0284C7" font-weight="700">esp32-room1</tspan> • Client Cert Authenticated
-    </text>
-    <text x="62" y="190" fill="#475569" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">
-      Sensors: <tspan fill="#0F172A" font-weight="600">Temperature (°C)</tspan> &amp; <tspan fill="#0F172A" font-weight="600">Relative Humidity (%RH)</tspan>
-    </text>
-    <text x="62" y="208" fill="#475569" font-family="system-ui, -apple-system, sans-serif" font-size="11">
-      MQTT: <tspan fill="#0369A1" font-family="monospace" font-size="10.5">iot/rooms/room1/{temperature,humidity}</tspan>
-    </text>
-    <!-- Right Indicator Badge -->
+    <text x="62" y="172" fill="#475569" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">Identity: <tspan fill="#0284C7" font-weight="700">esp32-room1</tspan> • Client cert authenticated</text>
+    <text x="62" y="190" fill="#475569" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">Sensors: <tspan fill="#0F172A" font-weight="600">Temperature (°C)</tspan> and <tspan fill="#0F172A" font-weight="600">Humidity (%RH)</tspan></text>
+    <text x="62" y="208" fill="#475569" font-family="system-ui, -apple-system, sans-serif" font-size="11">MQTT: <tspan fill="#0369A1" font-family="monospace" font-size="10.5">iot/rooms/room1/{temperature,humidity}</tspan></text>
     <rect x="315" y="112" width="58" height="20" rx="4" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1"/>
     <text x="344" y="126" text-anchor="middle" fill="#15803D" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700">ACTIVE</text>
   </g>
 
-  <!-- Room 2 Node -->
   <g id="node-room2" filter="url(#soft-shadow)">
     <rect x="432" y="102" width="335" height="132" rx="14" fill="url(#card-white)" stroke="#34D399" stroke-width="1.8"/>
-    <!-- Card Header Tag -->
     <rect x="444" y="112" width="124" height="20" rx="10" fill="#F0FDF4"/>
     <circle cx="454" cy="122" r="3.5" fill="#059669"/>
     <text x="464" y="126" fill="#059669" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" font-weight="800" letter-spacing="0.8">ROOM 2 DEPLOYMENT</text>
-
-    <!-- Node Title -->
     <text x="444" y="152" fill="#0F172A" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700">ESP32-S3 Node + DHT22</text>
-    <!-- Specs -->
-    <text x="444" y="172" fill="#475569" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">
-      Identity: <tspan fill="#059669" font-weight="700">esp32-room2</tspan> • Client Cert Authenticated
-    </text>
-    <text x="444" y="190" fill="#475569" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">
-      Sensors: <tspan fill="#0F172A" font-weight="600">Temperature (°C)</tspan> &amp; <tspan fill="#0F172A" font-weight="600">Relative Humidity (%RH)</tspan>
-    </text>
-    <text x="444" y="208" fill="#475569" font-family="system-ui, -apple-system, sans-serif" font-size="11">
-      MQTT: <tspan fill="#047857" font-family="monospace" font-size="10.5">iot/rooms/room2/{temperature,humidity}</tspan>
-    </text>
-    <!-- Right Indicator Badge -->
+    <text x="444" y="172" fill="#475569" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">Identity: <tspan fill="#059669" font-weight="700">esp32-room2</tspan> • Client cert authenticated</text>
+    <text x="444" y="190" fill="#475569" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">Sensors: <tspan fill="#0F172A" font-weight="600">Temperature (°C)</tspan> and <tspan fill="#0F172A" font-weight="600">Humidity (%RH)</tspan></text>
+    <text x="444" y="208" fill="#475569" font-family="system-ui, -apple-system, sans-serif" font-size="11">MQTT: <tspan fill="#047857" font-family="monospace" font-size="10.5">iot/rooms/room2/{temperature,humidity}</tspan></text>
     <rect x="697" y="112" width="58" height="20" rx="4" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1"/>
     <text x="726" y="126" text-anchor="middle" fill="#15803D" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700">ACTIVE</text>
   </g>
 
-  <!-- Room 3...N Extensibility Card -->
   <g id="node-roomN" filter="url(#soft-shadow)">
     <rect x="815" y="102" width="335" height="132" rx="14" fill="url(#card-white)" stroke="#94A3B8" stroke-width="1.6" stroke-dasharray="5 5"/>
-    <!-- Card Header Tag -->
     <rect x="827" y="112" width="140" height="20" rx="10" fill="#F1F5F9"/>
     <circle cx="837" cy="122" r="3.5" fill="#64748B"/>
     <text x="847" y="126" fill="#475569" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" font-weight="800" letter-spacing="0.8">ROOM 3...N (EXPANSION)</text>
-
-    <!-- Node Title -->
-    <text x="827" y="152" fill="#334155" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700">Extensible Room Abstraction</text>
-    <!-- Specs -->
-    <text x="827" y="172" fill="#64748B" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">
-      Configuration-driven mapping via <tspan fill="#D97706" font-weight="700">rooms.yaml</tspan>
-    </text>
-    <text x="827" y="190" fill="#64748B" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">
-      Auto-generates oneM2M AEs &amp; InfluxDB time-series tags
-    </text>
-    <text x="827" y="208" fill="#64748B" font-family="system-ui, -apple-system, sans-serif" font-size="11">
-      Plug-and-play extension without code changes or stack redesign
-    </text>
-    <!-- Right Indicator Badge -->
+    <text x="827" y="152" fill="#334155" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700">Extensible room abstraction</text>
+    <text x="827" y="172" fill="#64748B" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">Configuration-driven mapping via <tspan fill="#D97706" font-weight="700">rooms.yaml</tspan></text>
+    <text x="827" y="190" fill="#64748B" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">Generates room-specific identity and telemetry routing</text>
+    <text x="827" y="208" fill="#64748B" font-family="system-ui, -apple-system, sans-serif" font-size="11">Scales without redesigning the core stack</text>
     <rect x="1066" y="112" width="72" height="20" rx="4" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
     <text x="1102" y="126" text-anchor="middle" fill="#475569" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700">PLUG &amp; PLAY</text>
   </g>
 
-  <!-- ==================== LAYER 2: SECURE TRANSPORT CHANNEL ==================== -->
-  <!-- Connecting lines from Room cards down into Transport Bar -->
   <path d="M 217 234 V 254" stroke="#0284C7" stroke-width="2.5" marker-end="url(#arrow-cyan)"/>
   <path d="M 600 234 V 254" stroke="#059669" stroke-width="2.5" marker-end="url(#arrow-emerald)"/>
   <path d="M 982 234 V 254" stroke="#64748B" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arrow-blue)"/>
 
-  <!-- Transport Bar -->
   <g id="transport-bar" filter="url(#soft-shadow)">
     <rect x="50" y="258" width="1100" height="42" rx="10" fill="url(#transport-grad)" stroke="#0284C7" stroke-width="1.6"/>
-    <!-- Lock Glyph -->
     <g transform="translate(68, 271)">
       <rect x="2" y="6" width="12" height="10" rx="2" fill="#0284C7"/>
       <path d="M 5 6 V 4 A 3 3 0 0 1 11 4 V 6" stroke="#0284C7" stroke-width="1.8" fill="none"/>
     </g>
-    <text x="94" y="284" fill="#0C4A6E" font-family="system-ui, -apple-system, sans-serif" font-size="12.5" font-weight="800">
-      SECURE TELEMETRY TRANSPORT: MQTT OVER TLS / mTLS (PORT 8883)
-    </text>
-    <text x="590" y="284" fill="#0369A1" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" font-weight="600">
-      Client Certificate Verification • Topic-Level ACL Authorization • Deterministic JSON Telemetry Schema
-    </text>
-    <!-- Right Protocol Badge -->
+    <text x="94" y="284" fill="#0C4A6E" font-family="system-ui, -apple-system, sans-serif" font-size="12.5" font-weight="800">SECURE MQTT TRANSPORT: TLS / mTLS ON PORT 8883</text>
+    <text x="600" y="284" fill="#0369A1" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" font-weight="600">Client certificate validation • topic ACL enforcement • deterministic JSON payloads</text>
     <rect x="1058" y="267" width="80" height="24" rx="6" fill="#0284C7"/>
-    <text x="1098" y="283" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700">TLS 1.3 / mTLS</text>
+    <text x="1098" y="283" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700">TLS 1.3</text>
   </g>
 
-  <!-- Flow down from Transport into Edge Gateway Mosquitto -->
   <path d="M 185 300 V 374" stroke="#0284C7" stroke-width="2.5" marker-end="url(#arrow-cyan)"/>
   <rect x="195" y="324" width="110" height="18" rx="4" fill="#E0F2FE" stroke="#38BDF8" stroke-width="0.8"/>
   <text x="250" y="337" text-anchor="middle" fill="#0369A1" font-family="system-ui, sans-serif" font-size="9" font-weight="800">TLS HANDSHAKE</text>
 
-  <!-- ==================== LAYER 3: EDGE GATEWAY (RASPBERRY PI 5) ==================== -->
   <g id="edge-gateway" filter="url(#soft-shadow)">
-    <!-- Gateway Outer Card -->
     <rect x="50" y="338" width="1100" height="246" rx="18" fill="url(#card-gateway)" stroke="#93C5FD" stroke-width="2"/>
-
-    <!-- Gateway Header -->
     <g transform="translate(68, 350)">
-      <!-- RPi Icon / Dot -->
       <circle cx="6" cy="7" r="6" fill="#E11D48"/>
-      <text x="18" y="11" fill="#0F172A" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800">
-        Raspberry Pi 5 Edge Gateway
-      </text>
-      <text x="216" y="11" fill="#475569" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">
-        (Debian Linux ARM64 / aarch64 • Quad-Core Cortex-A76)
-      </text>
-
-      <!-- Podman Badge -->
-      <g transform="translate(740, -4)">
-        <rect x="0" y="0" width="276" height="22" rx="11" fill="#EEF2FF" stroke="#C7D2FE" stroke-width="1"/>
-        <circle cx="11" cy="11" r="3.5" fill="#6366F1"/>
-        <text x="20" y="15" fill="#4338CA" font-family="system-ui, sans-serif" font-size="10" font-weight="700">
-          CONTAINER ENGINE: PODMAN (ROOTLESS / SYSTEMD)
-        </text>
-      </g>
+      <text x="18" y="11" fill="#0F172A" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800">Raspberry Pi 5 Edge Gateway</text>
+      <text x="216" y="11" fill="#475569" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">Debian Linux on ARM64 / aarch64</text>
     </g>
 
-    <!-- Internal Service 1: Mosquitto MQTT Broker -->
     <g id="svc-mosquitto" transform="translate(68, 378)">
       <rect width="235" height="190" rx="12" fill="url(#subcard-bg)" stroke="#38BDF8" stroke-width="1.4"/>
-      <!-- Header -->
       <rect x="10" y="10" width="102" height="18" rx="4" fill="#F0F9FF"/>
       <text x="61" y="23" text-anchor="middle" fill="#0284C7" font-family="system-ui, sans-serif" font-size="9" font-weight="800">MQTT BROKER</text>
       <text x="10" y="46" fill="#0F172A" font-family="system-ui, sans-serif" font-size="14" font-weight="700">Eclipse Mosquitto</text>
-
-      <!-- Bullets -->
       <g font-family="system-ui, sans-serif" font-size="11" fill="#334155">
         <text x="12" y="70">• TLS termination on port 8883</text>
-        <text x="12" y="90">• mTLS client cert validation</text>
-        <text x="12" y="110">• Room-specific ACL enforcement</text>
+        <text x="12" y="90">• mTLS client verification</text>
+        <text x="12" y="110">• Room-specific ACL rules</text>
         <text x="12" y="130">• QoS 1 telemetry buffering</text>
-        <text x="12" y="150">• Internal broker bridge endpoint</text>
-        <text x="12" y="174" fill="#0284C7" font-weight="700">Namespace: iot/rooms/#</text>
+        <text x="12" y="150">• Topic namespace: iot/rooms/#</text>
       </g>
     </g>
 
-    <!-- Internal Service 2: oneM2M CSE Base -->
     <g id="svc-onem2m" transform="translate(328, 378)">
       <rect width="265" height="190" rx="12" fill="url(#subcard-bg)" stroke="#C084FC" stroke-width="1.4"/>
-      <!-- Header -->
       <rect x="10" y="10" width="116" height="18" rx="4" fill="#FAF5FF"/>
       <text x="68" y="23" text-anchor="middle" fill="#7E22CE" font-family="system-ui, sans-serif" font-size="9" font-weight="800">M2M SEMANTIC CORE</text>
-      <text x="10" y="46" fill="#0F172A" font-family="system-ui, sans-serif" font-size="14" font-weight="700">oneM2M CSE (/in-cse)</text>
-
-      <!-- Standard Hierarchy Diagram inside Card -->
+      <text x="10" y="46" fill="#0F172A" font-family="system-ui, sans-serif" font-size="14" font-weight="700">oneM2M CSE</text>
       <g font-family="monospace" font-size="10" fill="#1E293B">
         <rect x="10" y="58" width="245" height="120" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
         <text x="18" y="76" fill="#7E22CE" font-weight="700">CSEBase (RoomMeshCSE)</text>
         <text x="24" y="93" fill="#0284C7" font-weight="600">├── AE: Room1AE</text>
         <text x="32" y="108" fill="#475569">│    ├── cnt: temperature → cin</text>
         <text x="32" y="123" fill="#475569">│    └── cnt: humidity → cin</text>
+        <text x="24" y="142" fill="#059669" font-weight="600">└── AE: Room2AE</text>
+        <text x="32" y="157" fill="#475569">     ├── cnt: temperature → cin</text>
+        <text x="32" y="170" fill="#475569">     └── cnt: humidity → cin</text>
+      </g>
+    </g>
+
+    <g id="svc-influxdb" transform="translate(622, 378)">
+      <rect width="220" height="190" rx="12" fill="url(#subcard-bg)" stroke="#38BDF8" stroke-width="1.4"/>
+      <rect x="10" y="10" width="100" height="18" rx="4" fill="#EFF6FF"/>
+      <text x="60" y="23" text-anchor="middle" fill="#2563EB" font-family="system-ui, sans-serif" font-size="9" font-weight="800">TIME-SERIES</text>
+      <text x="10" y="46" fill="#0F172A" font-family="system-ui, sans-serif" font-size="14" font-weight="700">InfluxDB</text>
+      <g font-family="system-ui, sans-serif" font-size="11" fill="#334155">
+        <text x="12" y="70">• measurement: environmental</text>
+        <text x="12" y="90">• tags: room_id, device_id, sensor</text>
+        <text x="12" y="110">• fields: temperature_c, humidity_pct</text>
+        <text x="12" y="130">• room-by-room comparison queries</text>
+        <text x="12" y="150">• direct time-range analysis</text>
+      </g>
+    </g>
+
+    <g id="svc-grafana" transform="translate(870, 378)">
+      <rect width="250" height="190" rx="12" fill="url(#subcard-bg)" stroke="#F59E0B" stroke-width="1.4"/>
+      <rect x="10" y="10" width="92" height="18" rx="4" fill="#FFFBEB"/>
+      <text x="56" y="23" text-anchor="middle" fill="#B45309" font-family="system-ui, sans-serif" font-size="9" font-weight="800">DASHBOARD</text>
+      <text x="10" y="46" fill="#0F172A" font-family="system-ui, sans-serif" font-size="14" font-weight="700">Grafana</text>
+      <g font-family="system-ui, sans-serif" font-size="11" fill="#334155">
+        <text x="12" y="70">• current room status</text>
+        <text x="12" y="90">• temperature comparison</text>
+        <text x="12" y="110">• humidity comparison</text>
+        <text x="12" y="130">• historical delta analysis</text>
+        <text x="12" y="150">• offline/stale state indicators</text>
+      </g>
+    </g>
+  </g>
+</svg>
         <text x="24" y="141" fill="#059669" font-weight="600">└── AE: Room2AE</text>
         <text x="32" y="156" fill="#475569">     ├── cnt: temperature → cin</text>
         <text x="32" y="170" fill="#475569">     └── cnt: humidity → cin</text>

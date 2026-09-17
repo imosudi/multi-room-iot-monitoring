@@ -361,6 +361,8 @@ This project currently has real-world constraints that must be documented honest
 
 ## Authors
 
+MIO3B: Advanced IoT Systems Development
+
 - Janwalkar Pooja
 - Moçi AnnaMaria
 - Mosudi Isiaka

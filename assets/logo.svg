@@ -1,37 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="800" height="240" fill="none">
   <title>RoomMesh Logo</title>
-  <desc>RoomMesh Multi-Room IoT Monitoring Platform Logo</desc>
+  <desc>RoomMesh Multi-Room IoT Monitoring Platform Logo (Light Theme)</desc>
   <defs>
     <!-- Background Gradient -->
     <linearGradient id="logo-bg" x1="0" y1="0" x2="800" y2="240" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#070E1E"/>
-      <stop offset="50%" stop-color="#0B172E"/>
-      <stop offset="100%" stop-color="#081023"/>
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#F1F5F9"/>
     </linearGradient>
 
     <!-- Outer Border Gradient -->
     <linearGradient id="logo-border" x1="0" y1="0" x2="800" y2="240" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#1E3A8A" stop-opacity="0.9"/>
-      <stop offset="50%" stop-color="#0284C7" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#0F766E" stop-opacity="0.7"/>
+      <stop offset="0%" stop-color="#93C5FD" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#38BDF8" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#6EE7B7" stop-opacity="0.8"/>
     </linearGradient>
 
     <!-- Emblem Gradients -->
     <linearGradient id="emblem-card" x1="36" y1="36" x2="204" y2="204" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#0F2042"/>
-      <stop offset="100%" stop-color="#060E1E"/>
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F0F9FF"/>
     </linearGradient>
     <linearGradient id="emblem-border" x1="36" y1="36" x2="204" y2="204" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="0%" stop-color="#0284C7"/>
       <stop offset="50%" stop-color="#2563EB"/>
-      <stop offset="100%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
     </linearGradient>
 
-    <!-- Text & Accent Gradients -->
+    <!-- Brand Text Gradient -->
     <linearGradient id="brand-grad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#38BDF8"/>
-      <stop offset="45%" stop-color="#22D3EE"/>
-      <stop offset="100%" stop-color="#34D399"/>
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="50%" stop-color="#0D9488"/>
+      <stop offset="100%" stop-color="#059669"/>
     </linearGradient>
     <linearGradient id="room1-grad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#38BDF8"/>
@@ -47,17 +47,13 @@
     </linearGradient>
 
     <!-- Filters -->
-    <filter id="card-shadow" x="-10%" y="-10%" width="125%" height="125%">
-      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
-    </filter>
-    <filter id="glow-cyan" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
-      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    <filter id="card-shadow" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0F172A" flood-opacity="0.08"/>
     </filter>
 
     <!-- Dot Pattern -->
     <pattern id="bg-dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="0.9" fill="#38BDF8" fill-opacity="0.08"/>
+      <circle cx="2" cy="2" r="1" fill="#64748B" fill-opacity="0.09"/>
     </pattern>
   </defs>
 
@@ -65,29 +61,25 @@
   <rect x="1" y="1" width="798" height="238" rx="22" fill="url(#logo-bg)" stroke="url(#logo-border)" stroke-width="1.8"/>
   <rect x="1" y="1" width="798" height="238" rx="22" fill="url(#bg-dots)"/>
 
-  <!-- Subtle Ambient Glow -->
-  <circle cx="120" cy="120" r="90" fill="#0284C7" fill-opacity="0.07" filter="url(#glow-cyan)"/>
-  <circle cx="680" cy="120" r="110" fill="#10B981" fill-opacity="0.04" filter="url(#glow-cyan)"/>
-
   <!-- ==================== LEFT EMBLEM ==================== -->
   <g filter="url(#card-shadow)">
     <!-- Emblem Container -->
     <rect x="36" y="36" width="168" height="168" rx="24" fill="url(#emblem-card)" stroke="url(#emblem-border)" stroke-width="2"/>
 
     <!-- Mesh Matrix Grid Lines -->
-    <path d="M60 84L120 48L180 84L180 156L120 192L60 156Z" stroke="#1E3A68" stroke-width="1.2" stroke-dasharray="3 3" fill="none" opacity="0.6"/>
-    <line x1="120" y1="48" x2="120" y2="192" stroke="#1E3A68" stroke-width="1" stroke-dasharray="3 3" opacity="0.4"/>
-    <line x1="60" y1="84" x2="180" y2="156" stroke="#1E3A68" stroke-width="1" stroke-dasharray="3 3" opacity="0.4"/>
-    <line x1="60" y1="156" x2="180" y2="84" stroke="#1E3A68" stroke-width="1" stroke-dasharray="3 3" opacity="0.4"/>
+    <path d="M60 84L120 48L180 84L180 156L120 192L60 156Z" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="3 3" fill="none" opacity="0.6"/>
+    <line x1="120" y1="48" x2="120" y2="192" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3 3" opacity="0.45"/>
+    <line x1="60" y1="84" x2="180" y2="156" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3 3" opacity="0.45"/>
+    <line x1="60" y1="156" x2="180" y2="84" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3 3" opacity="0.45"/>
 
     <!-- Dynamic Mesh Connectors between Room 1, Hub, and Room 2 -->
-    <path d="M85 142 L120 85 L155 142 Z" stroke="#38BDF8" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.85"/>
-    <path d="M85 142 H155" stroke="#34D399" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.9"/>
+    <path d="M85 142 L120 85 L155 142 Z" stroke="#0284C7" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.85"/>
+    <path d="M85 142 H155" stroke="#059669" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.9"/>
 
     <!-- Telemetry Pulse Wave Radii -->
-    <circle cx="85" cy="142" r="16" stroke="#00E5FF" stroke-width="1" stroke-dasharray="2 2" fill="none" opacity="0.4"/>
-    <circle cx="155" cy="142" r="16" stroke="#10B981" stroke-width="1" stroke-dasharray="2 2" fill="none" opacity="0.4"/>
-    <circle cx="120" cy="85" r="14" stroke="#818CF8" stroke-width="1" stroke-dasharray="2 2" fill="none" opacity="0.4"/>
+    <circle cx="85" cy="142" r="16" stroke="#0284C7" stroke-width="1" stroke-dasharray="2 2" fill="none" opacity="0.45"/>
+    <circle cx="155" cy="142" r="16" stroke="#059669" stroke-width="1" stroke-dasharray="2 2" fill="none" opacity="0.45"/>
+    <circle cx="120" cy="85" r="14" stroke="#4F46E5" stroke-width="1" stroke-dasharray="2 2" fill="none" opacity="0.45"/>
 
     <!-- Gateway Hub Node (RPi 5) -->
     <circle cx="120" cy="85" r="11" fill="url(#hub-grad)" stroke="#C7D2FE" stroke-width="1.5"/>
@@ -104,33 +96,33 @@
     <path d="M155 137C155 137 151.5 141.5 151.5 143.5C151.5 145.4 153.1 147 155 147C156.9 147 158.5 145.4 158.5 143.5C158.5 141.5 155 137 155 137Z" fill="#FFFFFF"/>
 
     <!-- Node Labels inside emblem -->
-    <text x="85" y="167" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="700">ROOM 1</text>
-    <text x="155" y="167" text-anchor="middle" fill="#6EE7B7" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="700">ROOM 2</text>
-    <text x="120" y="70" text-anchor="middle" fill="#C7D2FE" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" font-weight="700" letter-spacing="0.5">GATEWAY</text>
+    <text x="85" y="167" text-anchor="middle" fill="#0369A1" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="800">ROOM 1</text>
+    <text x="155" y="167" text-anchor="middle" fill="#047857" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="800">ROOM 2</text>
+    <text x="120" y="70" text-anchor="middle" fill="#3730A3" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" font-weight="800" letter-spacing="0.5">GATEWAY</text>
 
     <!-- Telemetry Packets (flowing on lines) -->
-    <circle cx="102" cy="113" r="2.5" fill="#38BDF8"/>
-    <circle cx="138" cy="113" r="2.5" fill="#34D399"/>
-    <circle cx="120" cy="142" r="2.5" fill="#FACC15"/>
+    <circle cx="102" cy="113" r="2.5" fill="#0284C7"/>
+    <circle cx="138" cy="113" r="2.5" fill="#059669"/>
+    <circle cx="120" cy="142" r="2.5" fill="#D97706"/>
   </g>
 
   <!-- ==================== RIGHT CONTENT ==================== -->
 
   <!-- Top Pill / Status Tag -->
   <g>
-    <rect x="236" y="38" width="220" height="24" rx="12" fill="#0C203F" stroke="#0284C7" stroke-width="1.2"/>
-    <circle cx="250" cy="50" r="4.5" fill="#10B981" filter="url(#glow-cyan)"/>
+    <rect x="236" y="38" width="220" height="24" rx="12" fill="#F0F9FF" stroke="#BAE6FD" stroke-width="1.2"/>
+    <circle cx="250" cy="50" r="4.5" fill="#10B981"/>
     <circle cx="250" cy="50" r="2.5" fill="#ECFDF5"/>
-    <text x="262" y="54" fill="#7DD3FC" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.2">EDGE TELEMETRY PLATFORM</text>
+    <text x="262" y="54" fill="#0369A1" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="800" letter-spacing="1.2">EDGE TELEMETRY PLATFORM</text>
   </g>
 
   <!-- Brand Title: RoomMesh -->
   <text x="236" y="104" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="46" font-weight="800" letter-spacing="-0.8">
-    <tspan fill="#FFFFFF">Room</tspan><tspan fill="url(#brand-grad)">Mesh</tspan>
+    <tspan fill="#0F172A">Room</tspan><tspan fill="url(#brand-grad)">Mesh</tspan>
   </text>
 
   <!-- Subtitle -->
-  <text x="236" y="134" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="500" letter-spacing="0.2">
+  <text x="236" y="134" fill="#475569" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="500" letter-spacing="0.2">
     Multi-Room Environmental IoT Monitoring • oneM2M &amp; Edge Analytics
   </text>
 
@@ -138,51 +130,51 @@
   <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">
     <!-- Chip 1: ESP32-S3 -->
     <g transform="translate(236, 154)">
-      <rect width="76" height="24" rx="6" fill="#111E38" stroke="#1E3A68" stroke-width="1"/>
+      <rect width="76" height="24" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
       <circle cx="11" cy="12" r="3.5" fill="#EF4444"/>
-      <text x="21" y="16" fill="#E2E8F0">ESP32-S3</text>
+      <text x="21" y="16" fill="#1E293B">ESP32-S3</text>
     </g>
 
     <!-- Chip 2: DHT22 -->
     <g transform="translate(320, 154)">
-      <rect width="64" height="24" rx="6" fill="#111E38" stroke="#1E3A68" stroke-width="1"/>
-      <circle cx="11" cy="12" r="3.5" fill="#06B6D4"/>
-      <text x="21" y="16" fill="#E2E8F0">DHT22</text>
+      <rect width="64" height="24" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+      <circle cx="11" cy="12" r="3.5" fill="#0891B2"/>
+      <text x="21" y="16" fill="#1E293B">DHT22</text>
     </g>
 
     <!-- Chip 3: MQTT / TLS -->
     <g transform="translate(392, 154)">
-      <rect width="86" height="24" rx="6" fill="#111E38" stroke="#1E3A68" stroke-width="1"/>
-      <circle cx="11" cy="12" r="3.5" fill="#8B5CF6"/>
-      <text x="21" y="16" fill="#E2E8F0">MQTT / TLS</text>
+      <rect width="86" height="24" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+      <circle cx="11" cy="12" r="3.5" fill="#7C3AED"/>
+      <text x="21" y="16" fill="#1E293B">MQTT / TLS</text>
     </g>
 
     <!-- Chip 4: oneM2M -->
     <g transform="translate(486, 154)">
-      <rect width="74" height="24" rx="6" fill="#111E38" stroke="#1E3A68" stroke-width="1"/>
-      <circle cx="11" cy="12" r="3.5" fill="#A855F7"/>
-      <text x="21" y="16" fill="#E2E8F0">oneM2M</text>
+      <rect width="74" height="24" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+      <circle cx="11" cy="12" r="3.5" fill="#9333EA"/>
+      <text x="21" y="16" fill="#1E293B">oneM2M</text>
     </g>
 
     <!-- Chip 5: Raspberry Pi 5 -->
     <g transform="translate(568, 154)">
-      <rect width="66" height="24" rx="6" fill="#111E38" stroke="#1E3A68" stroke-width="1"/>
-      <circle cx="11" cy="12" r="3.5" fill="#F43F5E"/>
-      <text x="21" y="16" fill="#E2E8F0">RPi 5</text>
+      <rect width="66" height="24" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+      <circle cx="11" cy="12" r="3.5" fill="#E11D48"/>
+      <text x="21" y="16" fill="#1E293B">RPi 5</text>
     </g>
 
     <!-- Chip 6: InfluxDB -->
     <g transform="translate(642, 154)">
-      <rect width="72" height="24" rx="6" fill="#111E38" stroke="#1E3A68" stroke-width="1"/>
+      <rect width="72" height="24" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
       <circle cx="11" cy="12" r="3.5" fill="#0284C7"/>
-      <text x="21" y="16" fill="#E2E8F0">InfluxDB</text>
+      <text x="21" y="16" fill="#1E293B">InfluxDB</text>
     </g>
 
     <!-- Chip 7: Grafana -->
     <g transform="translate(722, 154)">
-      <rect width="66" height="24" rx="6" fill="#111E38" stroke="#1E3A68" stroke-width="1"/>
-      <circle cx="11" cy="12" r="3.5" fill="#F97316"/>
-      <text x="21" y="16" fill="#E2E8F0">Grafana</text>
+      <rect width="66" height="24" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+      <circle cx="11" cy="12" r="3.5" fill="#EA580C"/>
+      <text x="21" y="16" fill="#1E293B">Grafana</text>
     </g>
   </g>
 

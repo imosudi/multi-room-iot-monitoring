@@ -16,9 +16,9 @@
 ![Python](https://img.shields.io/badge/Python-Integration%20Services-3776AB?logo=python&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-ARM64%20Edge-FCC624?logo=linux&logoColor=black)
 
-RoomMesh is a multi-room environmental monitoring platform designed around a Raspberry Pi 5 edge gateway, secure MQTT transport, oneM2M resource modelling, time-series persistence and room-to-room comparison dashboards. The project uses two ESP32-S3 sensor nodes and two DHT22 sensors as the initial deployment baseline, while preserving an extensible architecture for additional rooms and future sensor types.
+RoomMesh is a multi-room environmental monitoring platform built around a Raspberry Pi 5 edge gateway, secure MQTT transport, oneM2M resource modelling, time-series persistence and room-to-room comparison dashboards. The project uses two ESP32-S3 sensor nodes and two DHT22 sensors as the initial deployment baseline while keeping the architecture extensible for additional rooms and future sensor types.
 
-This repository acts as the implementation blueprint and project documentation for a reproducible IoT platform aligned with the RoomMesh master specification. It is intentionally grounded in the real hardware constraints of the project: the current system measures temperature and humidity only, and does not fabricate CO₂ readings.
+This repository serves as the project engineering blueprint for a reproducible IoT platform that reflects the real constraints of the current deployment: the system measures temperature and humidity only and does not fabricate CO₂ values.
 
 ## Project identity
 
@@ -31,25 +31,7 @@ This repository acts as the implementation blueprint and project documentation f
 
 ## Mission
 
-The platform must transform the repository into a coherent, secure and extensible multi-room monitoring architecture based on the following flow:
-
-```text
-ESP32-S3 room sensor
-  ↓
-DHT22 sensor
-  ↓
-MQTT over TLS/mTLS
-  ↓
-Raspberry Pi 5 edge gateway
-  ├── Mosquitto
-  ├── oneM2M CSE
-  ├── integration / API service
-  ├── Node-RED
-  ├── InfluxDB
-  └── Grafana
-```
-
-The architecture is intentionally designed to compare room conditions, not merely display isolated readings.
+RoomMesh brings together room-level sensing, secure transport, edge processing and visual comparison into a single monitoring platform. The design supports direct comparison between rooms, while remaining suitable for future extension to additional rooms and sensor capabilities.
 
 ## Hardware reality
 
@@ -72,27 +54,9 @@ The project explicitly does not fabricate CO₂ values. CO₂ support may be des
 
 ### Logical data path
 
-```text
-Room
-  ↓
-ESP32-S3 identity
-  ↓
-MQTT topic
-  ↓
-MQTT message
-  ↓
-oneM2M AE
-  ↓
-oneM2M container
-  ↓
-contentInstance
-  ↓
-InfluxDB
-  ↓
-API / dashboard
-  ↓
-Grafana / RoomMesh dashboard
-```
+The platform follows a simple room-to-dashboard progression:
+
+Room → ESP32-S3 identity → MQTT topic → MQTT message → oneM2M AE → oneM2M container → content instance → InfluxDB → API → Grafana dashboard
 
 ## Room model
 
@@ -115,25 +79,16 @@ This model keeps room identity deterministic and avoids hard-coding room logic a
 
 ## MQTT architecture
 
-Mosquitto is the broker and MQTT remains the primary telemetry transport path.
+Mosquitto serves as the broker, and MQTT remains the primary telemetry transport path for the system.
 
-Recommended topic namespace:
+A room-aware topic structure keeps data deterministic and easy to validate:
 
-```text
-iot/rooms/{room_id}/temperature
-iot/rooms/{room_id}/humidity
-```
+- iot/rooms/room1/temperature
+- iot/rooms/room1/humidity
+- iot/rooms/room2/temperature
+- iot/rooms/room2/humidity
 
-Examples:
-
-```text
-iot/rooms/room1/temperature
-iot/rooms/room1/humidity
-iot/rooms/room2/temperature
-iot/rooms/room2/humidity
-```
-
-Example telemetry payload:
+A typical telemetry payload contains the room and device identity together with the measured values:
 
 ```json
 {
@@ -146,7 +101,7 @@ Example telemetry payload:
 }
 ```
 
-The repository should preserve the existing payload contract if already implemented, but the final design must document a deterministic MQTT message format.
+The final deployment should preserve the established payload contract where one already exists, while maintaining a clear and consistent message format.
 
 ## MQTT security and certificate model
 
@@ -165,36 +120,18 @@ The certificate model should align service identity with the broker and authenti
 
 ## oneM2M architecture
 
-The oneM2M layer should represent a genuine room hierarchy rather than a generic flat container system.
+The oneM2M layer represents a true room-based hierarchy rather than a generic flat container model.
 
-```text
-CSE
-├── AE: Room1AE
-│   ├── container: temperature
-│   └── container: humidity
-│
-└── AE: Room2AE
-    ├── container: temperature
-    └── container: humidity
-```
+Each room is represented by its own application entity, with sensor-specific containers beneath it:
 
-The key mapping is:
+- Room1AE
+  - temperature
+  - humidity
+- Room2AE
+  - temperature
+  - humidity
 
-```text
-room_id
-  ↕
-ESP32 identity
-  ↕
-MQTT topic
-  ↕
-oneM2M AE
-  ↕
-oneM2M container
-  ↕
-contentInstance
-```
-
-The system should avoid duplicate entities and ensure that room-level identity remains explicit in the data model.
+The mapping between the room, ESP32 identity, MQTT topic, oneM2M application entity and content instance should be explicit and auditable, without creating duplicate resources for the same measurement.
 
 ## MQTT → oneM2M integration
 
@@ -265,27 +202,14 @@ The dashboard must not hide the sign of a calculated difference, and it should n
 
 ## RoomMesh web and API architecture
 
-The project separates distinct application surfaces:
+The project separates the primary interfaces as follows:
 
-```text
-roommesh.site          → project landing page and documentation
-dashboard.roommesh.site → human-facing RoomMesh dashboard
-api.roommesh.site      → API
-grafana.roommesh.site  → Grafana observability dashboard
-```
+- roommesh.site for the project landing page and documentation
+- dashboard.roommesh.site for the human-facing RoomMesh dashboard
+- api.roommesh.site for the machine-facing API
+- grafana.roommesh.site for Grafana-based observability and analysis
 
-Suggested API resources:
-
-```text
-GET /api/v1/rooms
-GET /api/v1/rooms/{room_id}
-GET /api/v1/rooms/{room_id}/current
-GET /api/v1/rooms/{room_id}/history
-GET /api/v1/compare
-GET /api/v1/health
-```
-
-The API should abstract the database and messaging layer rather than exposing raw storage details directly.
+The API layer exposes the room and comparison data in a structured way without exposing raw storage details directly. A minimal and coherent set of endpoints should support rooms, current state, history and health checks.
 
 ## Data quality and device availability
 
@@ -337,31 +261,20 @@ Use an example configuration file such as `.env.example` with placeholders rathe
 
 ## Installation and deployment workflow
 
-The expected deployment process is:
+The deployment process should follow a clear sequence:
 
-```text
-clone repository
-  ↓
-configure environment variables and room definitions
-  ↓
-provision certificates and secrets
-  ↓
-prepare persistent storage
-  ↓
-start Podman services
-  ↓
-verify service health
-  ↓
-verify MQTT telemetry
-  ↓
-verify oneM2M ingestion
-  ↓
-verify InfluxDB persistence
-  ↓
-verify Grafana dashboard data
-```
+1. clone the repository
+2. configure environment variables and room definitions
+3. provision certificates and secrets
+4. prepare persistent storage
+5. start the Podman services
+6. verify service health
+7. verify MQTT telemetry
+8. verify oneM2M ingestion
+9. verify InfluxDB persistence
+10. verify Grafana dashboard data
 
-This process must be reproducible by a technically competent user without undocumented steps.
+This workflow should remain reproducible for a technically competent user without undocumented steps.
 
 ## Certificate provisioning and infrastructure
 
@@ -422,18 +335,7 @@ Common operational checks include:
 
 ## Extension to additional rooms
 
-The architecture is intentionally extensible:
-
-```text
-room1
-room2
-room3
-room4
-...
-roomN
-```
-
-A new room should ideally be added through configuration and mapping definitions rather than duplicated source logic.
+The architecture is intentionally extensible beyond the initial two-room deployment. Additional rooms can be introduced through configuration and mapping definitions rather than duplicating source logic across the stack.
 
 ## Extension to additional sensors
 
@@ -470,4 +372,4 @@ This project is distributed under the BSD 3-Clause License. See [LICENSE](LICENS
 
 ## Notes
 
-This repository is structured as an implementation prompt and engineering blueprint for a complete multi-room IoT air-quality comparison system. It is intended to be used as the basis for a reproducible academic platform with secure edge deployment, room-aware resource modelling, and comparative analytics across environmental conditions.
+This repository is intended as the engineering blueprint for a complete multi-room IoT monitoring system, with secure edge deployment, room-aware resource modelling and comparative analytics across environmental conditions.
